@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600&family=Sixtyfour&display=swap');
+
+:root{
+    --dark: #16191c;
+    --dark-x: #1e2126;
+    --light: #ffffff;
+}
+
+body{
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 300;
+    color: var(--light);
+    background-image: url('assets/fondo/fondo.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.bg-dark{
+    background-color: var(--dark)!important;
+}
+
+.bg-dark-x{
+    background-color: var(--dark-x);
+}
+
+.form-control, .btn{
+    min-height: 3.125rem;
+    line-height: initial;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-image: url('assets/fondo/fondo_movil.png') !important;
+    }
+  }
