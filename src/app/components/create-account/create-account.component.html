@@ -1,0 +1,19 @@
+
+    <!--Esto es lo que debe cambiar-->
+    <div class="px-lg-5 py-lg-4 p-4">
+      <h1 class="font-weight-bold mb-4">Bienvenido</h1>
+      <h4 class="font-weight-bold mb-4">Es rápido y fácil.</h4>
+      <form class="mb-5">
+        <div class="mb-4">
+          
+          <input type="text" [(ngModel)]="EmailInput" [ngModelOptions]="{standalone: true}" class="form-control bg-dark-x border-0" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+        </div>
+        <div class="mb-4">
+          <input type="text"  [(ngModel)]="PasswordInput" [ngModelOptions]="{standalone: true}" class="form-control bg-dark-x border-0 mb-2" id="exampleInputPassword1" placeholder="Contraseña">
+        </div>
+        <button type="submit"  (click)="sendData()" class="btn btn-warning w-100">Registrarse</button>
+      </form>
+    </div>
+
+
+

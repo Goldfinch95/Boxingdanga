@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -8,7 +9,7 @@ import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,FormsModule, FontAwesomeModule],
+  imports: [CommonModule, RouterOutlet,FormsModule, FontAwesomeModule, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -23,6 +24,8 @@ export class AppComponent {
   EmailInput: string = '';
   PasswordInput: string = '';
 
+  isVisible: boolean = true;
+
   data: { email: string, password: string }[] = [];
 
   sendData(){
@@ -30,5 +33,9 @@ export class AppComponent {
     console.log(this.data)
     this.EmailInput = '';
     this.PasswordInput = '';
+  }
+
+  hideLogin(){
+    this.isVisible = !this.isVisible
   }
 }
