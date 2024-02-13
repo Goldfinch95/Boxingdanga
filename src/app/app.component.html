@@ -19,7 +19,7 @@
           <div class="mb-4">
             
             <input type="text" [(ngModel)]="PasswordInput" [ngModelOptions]="{standalone: true}"  class="form-control bg-dark-x border-0 mb-2" id="exampleInputPassword1" placeholder="Contraseña">
-            <a  href="/forgot_password"  id="emailHelp" class="nav-link form-text text-white text-decoration-none">¿Has olvidado tu contraseña?</a>
+            <a  (click)="hideLogin()" routerLink="/forgot-password"  id="emailHelp" class="nav-link form-text text-white text-decoration-none">¿Has olvidado tu contraseña?</a>
           </div>
           <button type="submit" (click)="sendData()" class="btn btn-warning w-100">Iniciar sesión</button>
         </form>
