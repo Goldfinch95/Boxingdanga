@@ -14,18 +14,18 @@
         <form class="mb-5">
           <div class="mb-4">
             
-            <input type="text" class="form-control bg-dark-x border-0" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+            <input type="text" [(ngModel)]="EmailInput" [ngModelOptions]="{standalone: true}" class="form-control bg-dark-x border-0" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
           </div>
           <div class="mb-4">
             
-            <input type="text" class="form-control bg-dark-x border-0 mb-2" id="exampleInputPassword1" placeholder="Contraseña">
-            <a  href="/forgot_password" (click)="callforgotPassword()" id="emailHelp" class="nav-link form-text text-white text-decoration-none">¿Has olvidado tu contraseña?</a>
+            <input type="text" [(ngModel)]="PasswordInput" [ngModelOptions]="{standalone: true}"  class="form-control bg-dark-x border-0 mb-2" id="exampleInputPassword1" placeholder="Contraseña">
+            <a  href="/forgot_password"  id="emailHelp" class="nav-link form-text text-white text-decoration-none">¿Has olvidado tu contraseña?</a>
           </div>
-          <button type="submit" class="btn btn-warning w-100">Iniciar sesión</button>
+          <button type="submit" (click)="sendData()" class="btn btn-warning w-100">Iniciar sesión</button>
         </form>
       </div>
         <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 w-100 mt-auto">
-          <p class="d-inline-block mb-0">¿Todavía no tienes una cuenta?</p> <a  href="/create_account" (click)="callCreateAccount()" class="nav-link text-light font-weight-bold text-decoration-none"> Crea una ahora</a>
+          <p class="d-inline-block mb-0">¿Todavía no tienes una cuenta?</p> <a  href="/create_account" class="nav-link text-light font-weight-bold text-decoration-none"> Crea una ahora</a>
         </div>
       </div>
     </div>
