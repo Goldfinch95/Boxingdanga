@@ -13,10 +13,11 @@ export class CreateAccountComponent {
   EmailInput: string = '';
   PasswordInput: string = '';
 
-  data: { email: string, password: string }[] = [];
+  data: { email: string, password: string } = {email: '', password: ''};
 
   sendData(){
-    this.data.push({ email: this.EmailInput, password: this.PasswordInput });
+    this.data.email = this.EmailInput;
+    this.data.password = this.PasswordInput;
     console.log(this.data)
     this.EmailInput = '';
     this.PasswordInput = '';
