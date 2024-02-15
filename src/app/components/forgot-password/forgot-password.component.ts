@@ -12,16 +12,20 @@ import { RouterLink } from '@angular/router';
 export class ForgotPasswordComponent {
 
   EmailInput: string = '';
+  EmailSend: boolean = false;
 
   data: { email: string } = {email: ''};
 
   sendData() {
+    if(this.EmailInput.length === 0){
+      this.EmailSend = true;
+    }
     if (this.EmailInput.length > 0) {
       this.data.email = this.EmailInput;
       console.log(this.data);
       this.EmailInput = '';
     } else {
-      this.EmailInput = 'Agregue un Email';
+      this.EmailInput = 'Email';
     }
   }
   
