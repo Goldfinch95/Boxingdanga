@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600&family=Sixtyfour&display=swap');
 
 :root{
@@ -18,25 +17,15 @@ body{
     height: 100vh;
 }
 
-.bg-dark{
-    background-color: var(--dark)!important;
-}
 
-.bg-dark-x{
-    background-color: var(--dark-x);
-}
 
-.form-control, .btn{
-    min-height: 3.125rem;
-    line-height: initial;
-}
-
-.gone{
-    display: none ;
-}
-
-@media (max-width: 768px) {
-    body {
-        background-image: url('assets/fondo/fondo_movil.png') !important;
+.logo{
+    font-family: 'Sixtyfour', sans-serif;
     }
-  }
+
+
+    @media (max-width: 768px) {
+        body {
+            background-image: url('assets/fondo/fondo_movil.png') !important;
+        }
+      }

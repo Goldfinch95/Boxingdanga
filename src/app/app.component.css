@@ -1,18 +1,3 @@
-.logo{
-font-family: 'Sixtyfour', sans-serif;
+.margin{
+    margin-bottom: 25%;
 }
-
-.btn{
-    color: #000;
-}
-
-input{
-    color: #fff;
-}
-
-input::placeholder{
-    color: #fff;
-}
-
-
-

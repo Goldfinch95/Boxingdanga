@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+
 @Component({
-  selector: 'app-create-account',
+  selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
-  templateUrl: './create-account.component.html',
-  styleUrl: './create-account.component.css'
+  imports: [FormsModule, RouterLink],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class CreateAccountComponent {
+export class LoginComponent {
   EmailInput: string = '';
   PasswordInput: string = '';
 
