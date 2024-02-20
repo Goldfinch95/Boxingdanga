@@ -16,16 +16,16 @@ export class RecoveryPasswordComponent {
   data: { password: string } = { password: '' };
 
   sendData() {
-    if(this.PasswordInput.length === 0){
+    
+    this.PasswordSend = true;
+
+    if(this.PasswordInput.length >= 6){
       this.PasswordSend = true;
     }
     if (this.PasswordInput.length > 1) {
       this.data.password = this.PasswordInput;
       console.log(this.data);
       this.PasswordInput = '';
-    }
-    else{
-      this.PasswordInput = 'Contraseña';
     }
   }
 }

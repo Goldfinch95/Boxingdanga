@@ -15,7 +15,6 @@
             [(ngModel)]="nameInput"
             [ngModelOptions]="{ standalone: true }"
             class="form-control bg-dark-x border-0"
-            id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Nombre"
           />
@@ -31,7 +30,6 @@
             [(ngModel)]="lastNameInput"
             [ngModelOptions]="{ standalone: true }"
             class="form-control bg-dark-x border-0"
-            id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Apellido"
           />
@@ -45,7 +43,6 @@
             [(ngModel)]="dateInput"
             [ngModelOptions]="{ standalone: true }"
             class="form-control bg-dark-x border-0"
-            id="exampledateInput"
             aria-describedby="emailHelp"
             placeholder="Fecha de nacimiento"
           />
@@ -59,7 +56,7 @@
             [(ngModel)]="countryInput"
             [ngModelOptions]="{ standalone: true }"
             class="form-control bg-dark-x border-0"
-            id="exampleInputEmail1"
+            autocomplete="new-country"
             aria-describedby="emailHelp"
             placeholder="País"
           />
@@ -75,7 +72,7 @@
             [(ngModel)]="PasswordInput"
             [ngModelOptions]="{ standalone: true }"
             class="form-control bg-dark-x border-0 mb-2"
-            id="exampleInputPassword1"
+            autocomplete="new-password"
             placeholder="Contraseña"
           />
         </div>
@@ -90,7 +87,7 @@
             [(ngModel)]="secondPasswordInput"
             [ngModelOptions]="{ standalone: true }"
             class="form-control bg-dark-x border-0 mb-2"
-            id="exampleInputPassword1"
+            autocomplete="new-password"
             placeholder="Repita la contraseña"
           />
         </div>
@@ -106,20 +103,33 @@
             [(ngModel)]="EmailInput"
             [ngModelOptions]="{ standalone: true }"
             class="form-control bg-dark-x border-0"
-            id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Email"
           />
         </div>
-        <div class="mt-4 mb-4">
-          <button
-          type="submit"
-          (click)="sendData()"
-          class="btn btn-warning w-100"
-        >
-          Registrarse
-        </button>
+        @if (dataSend) {
+          <div class="mt-4 mb-4">
+            <button
+            type="submit"
+            routerLink="/login"
+            (click)="sendData()"
+            class="btn btn-warning w-100"
+          >
+            Registrarse
+          </button>
         </div>
+        }
+        @else {
+          <div class="mt-4 mb-4">
+            <button
+            type="submit"
+            (click)="sendData()"
+            class="btn btn-warning w-100"
+          >
+            Registrarse
+          </button>
+          </div>
+        }
       </form>
     </div>
   </div>

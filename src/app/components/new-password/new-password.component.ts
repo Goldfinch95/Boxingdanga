@@ -12,7 +12,9 @@ import { RouterLink } from '@angular/router';
 export class NewPasswordComponent {
 
   PasswordInput: string = '';
+  secondPasswordInput: string = '';
   PasswordSend: boolean = false;
+  secondPasswordSend: boolean = false;
 
   data: { password: string } = { password: '' };
 
@@ -20,13 +22,18 @@ export class NewPasswordComponent {
     if(this.PasswordInput.length === 0){
       this.PasswordSend = true;
     }
-    if (this.PasswordInput.length > 1) {
-      this.data.password = this.PasswordInput;
+    if(this.secondPasswordInput.length === 0){
+      this.secondPasswordSend = true;
+    }
+    if (this.PasswordInput.length > 1 && this.secondPasswordInput.length > 1) {
+      if(this.PasswordInput === this.secondPasswordInput){
+        this.data.password = this.PasswordInput;
+        this.PasswordSend = true;
+        console.log('contraseñas cambiadas');
+      }
       console.log(this.data);
       this.PasswordInput = '';
-    }
-    else{
-      this.PasswordInput = 'Agregue la contraseña';
+      this.secondPasswordInput = '';
     }
   }
   

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-create-account',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './create-account.component.html',
   styleUrl: './create-account.component.css',
 })
@@ -22,6 +24,7 @@ export class CreateAccountComponent {
   EmailSend: boolean = false;
   PasswordSend: boolean = false;
   secondPasswordSend: boolean = false;
+  dataSend:boolean = false;
 
   data: { name: string; lastName: string; date: string; country: string; email: string; password: string } = {
     name: '',
@@ -63,7 +66,9 @@ export class CreateAccountComponent {
       if(this.PasswordInput === this.secondPasswordInput){
         this.data.password = this.PasswordInput;
       }
+      this.dataSend = true;
       console.log(this.data);
+      console.log('cuenta creada con éxito')
     }
   }
 }
