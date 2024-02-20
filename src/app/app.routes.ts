@@ -4,6 +4,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 export const routes: Routes = [
@@ -29,5 +30,9 @@ export const routes: Routes = [
     {
         path: 'new-password',
         component: NewPasswordComponent
+    },
+    {
+        path: 'home',
+        component: HomeComponent
     }
 ];
