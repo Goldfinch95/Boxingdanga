@@ -10,8 +10,19 @@ input::placeholder{
     color: #fff;
 }
 
+#exampledateInput{
+    color: #fff;
+}
 .form-control, .btn{
     color: #fff;
     min-height: 3.125rem;
     line-height: initial;
+}
+
+
+
+
+section{
+    position: relative;
+    bottom: 12%;
 }

@@ -12,10 +12,11 @@ body{
     color: var(--light);
     background-image: url('assets/fondo/fondo.jpg') !important;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     height: 100vh;
 }
+
 
 
 
@@ -27,5 +28,7 @@ body{
     @media (max-width: 768px) {
         body {
             background-image: url('assets/fondo/fondo_movil.png') !important;
+            background-size: cover;
+            overflow: hidden;
         }
       }

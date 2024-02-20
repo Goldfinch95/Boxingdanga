@@ -1,41 +1,126 @@
 <section>
-    <div class="px-lg-5 py-lg-4 p-4">
-      <div>
-        <h1 class="font-weight-bold mb-4">Bienvenido</h1>
-        <h4 class="font-weight-bold mb-4">Es rápido y fácil.</h4>
-      </div>
-      <div>
-        <form class="mb-5">
-          <div class="mb-4">
-            @if(EmailSend){
-              <h4 class="font-weight-bold mb-4 text-warning">Ingrese un Email</h4>
-            }
-            <input
-              type="text"
-              [(ngModel)]="EmailInput"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control bg-dark-x border-0"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Email"
-            />
-          </div>
-          <div class="mb-4">
-            @if(PasswordSend){
-              <h4 class=" font-weight-bold mb-4 text-warning">Ingrese una Contraseña</h4>
-            }
-            <input
-              type="text"
-              [(ngModel)]="PasswordInput"
-              [ngModelOptions]="{ standalone: true }"
-              class="form-control bg-dark-x border-0 mb-2"
-              id="exampleInputPassword1"
-              placeholder="Contraseña"
-            />
-          </div>
-          <button type="submit"  (click)="sendData()" class="btn btn-warning w-100">Registrarse</button>
-        </form>
-      </div>
+  <div class="px-lg-5 py-lg-4 p-4">
+    <div>
+      <h1 class="font-weight-bold mb-4">Bienvenido</h1>
+      <h4 class="font-weight-bold mb-4">Es rápido y fácil.</h4>
     </div>
-  </section>
-  
+    <div>
+      <form class="row g-2">
+        <div class="col-md-4 w-50 mb-2">
+          @if(nameSend){
+          <h4 class="font-weight-bold mb-4 text-warning">Ingrese un nombre</h4>
+          }
+          <input
+            type="text"
+            [(ngModel)]="nameInput"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control bg-dark-x border-0"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Nombre"
+          />
+        </div>
+        <div class="col-md-4 w-50 mb-2">
+          @if(lastNameSend){
+          <h4 class="font-weight-bold mb-4 text-warning">
+            Ingrese un apellido
+          </h4>
+          }
+          <input
+            type="text"
+            [(ngModel)]="lastNameInput"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control bg-dark-x border-0"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Apellido"
+          />
+        </div>
+        <div class="col-md-4 w-50 mb-2">
+          @if(dateSend){
+          <h4 class="font-weight-bold mb-4 text-warning">Ingrese una fecha</h4>
+          }
+          <input
+            type="date"
+            [(ngModel)]="dateInput"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control bg-dark-x border-0"
+            id="exampledateInput"
+            aria-describedby="emailHelp"
+            placeholder="Fecha de nacimiento"
+          />
+        </div>
+        <div class="col-md-4 w-50 ">
+          @if(countrySend){
+          <h4 class="font-weight-bold mb-4 text-warning">Ingrese un país</h4>
+          }
+          <input
+            type="text"
+            [(ngModel)]="countryInput"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control bg-dark-x border-0"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="País"
+          />
+        </div>
+        <div class="col-md-4 w-50 mb-2">
+          @if(PasswordSend){
+          <h4 class="font-weight-bold mb-4 text-warning">
+            Ingrese una Contraseña
+          </h4>
+          }
+          <input
+            type="password"
+            [(ngModel)]="PasswordInput"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control bg-dark-x border-0 mb-2"
+            id="exampleInputPassword1"
+            placeholder="Contraseña"
+          />
+        </div>
+        <div class="col-md-4 w-50 mb-2">
+          @if(secondPasswordSend){
+          <h4 class="font-weight-bold mb-4 text-warning">
+            Ingrese una Contraseña
+          </h4>
+          }
+          <input
+            type="password"
+            [(ngModel)]="secondPasswordInput"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control bg-dark-x border-0 mb-2"
+            id="exampleInputPassword1"
+            placeholder="Repita la contraseña"
+          />
+        </div>
+        @if (PasswordInput != secondPasswordInput) {
+          <h4 class="font-weight-bold mb-4 text-warning">Las contraseñas no coinciden</h4>
+        }
+        <div class="mb-4">
+          @if(EmailSend){
+          <h4 class="font-weight-bold mb-4 text-warning">Ingrese un Email</h4>
+          }
+          <input
+            type="text"
+            [(ngModel)]="EmailInput"
+            [ngModelOptions]="{ standalone: true }"
+            class="form-control bg-dark-x border-0"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+          />
+        </div>
+        <div class="mt-4 mb-4">
+          <button
+          type="submit"
+          (click)="sendData()"
+          class="btn btn-warning w-100"
+        >
+          Registrarse
+        </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
