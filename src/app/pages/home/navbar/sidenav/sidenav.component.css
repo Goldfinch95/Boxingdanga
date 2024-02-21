@@ -1,0 +1,39 @@
+.container-lg{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.navbar-brand{
+    font-size: 1.8em;
+    letter-spacing: 2px;
+}
+
+.bg-dark-x{
+    background-color: #21252980;
+}
+
+.form-control, .btn{
+    min-height: 3.125rem;
+    line-height: initial;
+}
+
+.forgot{
+    color: #adb5bd;
+}
+
+.mr-2{
+    margin-right: 6px;
+}
+
+.ml-2{
+    margin-left: 6px;
+}
+
+.icon{
+    font-size: 1.5em;
+}
