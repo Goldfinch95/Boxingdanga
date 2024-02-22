@@ -1,4 +1,4 @@
-<section class="container" id="blogs">
+<section class="text-white p-5" id="blogs">
     <div class="row g-5">
         <div class="col-12 text-center">
             <h2 class="text-warning text-uppercase p-5">Blogs</h2>
@@ -6,7 +6,7 @@
         <!--cards-->
         @for(blog of blogs; track blog.id){
             <article class="col-md-6 col-lg-4 card-effect">
-                <div class="card">
+                <div class="card border-0">
                 <img src="{{blog.img}}" alt="Ranking" class="card-img card-img-filter">
                 <div class="card-img-overlay text-white d-flex flex-column justify-content-center text-center">
                     <h4>{{blog.title}}</h4>
