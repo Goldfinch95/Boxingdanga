@@ -32,7 +32,7 @@ input::placeholder{
 #exampledateInput{
     color: #fff;
 }
-.form-control, .btn{
+.form-control,.form-select,.btn{
     color: #fff;
     min-height: 3.125rem;
     line-height: initial;

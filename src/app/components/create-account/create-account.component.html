@@ -66,15 +66,13 @@
                   Ingrese un país
                 </h4>
                 }
-                <input
-                  type="text"
-                  [(ngModel)]="countryInput"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control bg-dark-x border-0"
-                  autocomplete="new-country"
-                  aria-describedby="emailHelp"
-                  placeholder="País"
-                />
+                <select class="form-select bg-dark-x border-0" [(ngModel)]="countryInput"
+                [ngModelOptions]="{ standalone: true }" aria-label="Default select example">
+                <option  selected>Selecciona un país</option>
+                  @for (country of countries; track country.name) {
+                    <option value={{country.name}}>{{country.name}}</option>
+                  }
+                </select>
               </div>
               <div class="col-md-4 w-50 mb-2">
                 @if(PasswordSend){
