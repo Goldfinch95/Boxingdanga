@@ -13,4 +13,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarComponent {
   faBars = faBars;
+
+  toUp(){
+    document.getElementById('carouselExampleCaptions')?.scrollIntoView({behavior: 'smooth'})
+  }
 }

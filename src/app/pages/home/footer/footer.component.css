@@ -1,3 +1,7 @@
 *{
     color: white;
 }
+
+.toUp{
+    cursor: pointer;
+}

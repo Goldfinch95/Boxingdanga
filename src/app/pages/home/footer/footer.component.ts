@@ -9,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  toUp(){
+    document.getElementById('carouselExampleCaptions')?.scrollIntoView({behavior: 'smooth'})
+  }
 }
