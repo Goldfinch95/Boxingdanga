@@ -37,6 +37,13 @@ input::placeholder{
     line-height: initial;
 }
 
+.icon{
+    color: #fff;
+    border: none;
+    min-height: 3.125rem;
+    min-width: 3.125rem;
+}
+
 @media (max-width: 768px) {
     .body {
         background-image: url('../../../assets/fondo/fondo_movil.png');

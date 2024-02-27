@@ -33,18 +33,31 @@
               <div class="mb-4">
                 @if(PasswordSend){
                 <h4 class="font-weight-bold mb-4 text-warning">
-                  Ingrese una Contraseña
+                  Ingrese una Contraseña, recuerde: entre 6 y 12 caracteres. ademas, debe contener una mayúscula.
                 </h4>
                 }
-                <input
-                  type="password"
-                  [(ngModel)]="PasswordInput"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control bg-dark-x border-0 mb-2"
-                  id="exammpleInputPassword1"
-                  autocomplete="password"
-                  placeholder="Contraseña"
-                />
+                <div class="input-group mb-2">
+                  <input
+                  [type]="showPassword ? 'text' : 'password'"
+                    [(ngModel)]="PasswordInput"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control bg-dark-x border-0"
+                    id="exampleInputPassword1"
+                    autocomplete="password"
+                    placeholder="Contraseña"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="icon bg-dark-x"
+                      type="button"
+                      id="icon-click"
+                      (click)="togglePasswordVisibility()"
+                    >
+                      <fa-icon [icon]="showIcon ? faEye : faEyeSlash"></fa-icon>
+                    </button>
+                  </div>
+                </div>
+                
                 <a
                   routerLink="/forgot-password"
                   id="emailHelp"
@@ -55,7 +68,7 @@
               <div>
                 <button
                   type="submit"
-                  routerLink="/home"
+                  
                   (click)="sendData()"
                   class="btn btn-warning w-100"
                 >

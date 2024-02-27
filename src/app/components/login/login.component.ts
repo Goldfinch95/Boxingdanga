@@ -1,33 +1,64 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, FontAwesomeModule, NgbModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
+
   EmailInput: string = '';
   PasswordInput: string = '';
   EmailSend: boolean = false;
   PasswordSend: boolean = false;
+  showPassword = false;
+  showIcon = false;
 
-  data: { email: string, password: string } = {email: '', password: ''};
+  data: { email: string; password: string } = { email: '', password: '' };
 
-  sendData(){
-    if(this.EmailInput.length === 0){
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+    this.showIcon = !this.showIcon;
+  }
+
+  getPasswordType() {
+    return this.showPassword ? 'text' : 'password';
+  }
+
+  sendData() {
+    if (this.EmailInput.length === 0) {
       this.EmailSend = true;
     }
     if(this.PasswordInput.length === 0){
       this.PasswordSend = true;
     }
-    if(this.EmailInput.length > 1 || this.PasswordInput.length > 1){
-    this.data.email = this.EmailInput;
-    this.data.password = this.PasswordInput;
-    console.log(this.data)
+    
+    else {
+      if (this.EmailInput.length >= 1) {
+        this.EmailSend = false;
+        this.data.email = this.EmailInput;
+        //mínimo 6, máximo 12 caracteres
+        if (this.PasswordInput.length >= 6 && this.PasswordInput.length <= 12) {
+          //contiene una mayúscula
+          if (/[A-Z]/.test(this.PasswordInput)) {
+            this.data.password = this.PasswordInput;
+            this.PasswordSend = false;
+            console.log(this.data);
+        }
+        }
+        else {
+          this.PasswordSend = true;
+        }
+      }
     }
   }
 }
