@@ -68,9 +68,9 @@
                 }
                 <select class="form-select bg-dark-x border-0" [(ngModel)]="countryInput"
                 [ngModelOptions]="{ standalone: true }" aria-label="Default select example">
-                <option  selected>Selecciona un país</option>
+                <option  selected class="form-control bg-dark-x border-0">Selecciona un país</option>
                   @for (country of countries; track country.name) {
-                    <option value={{country.name}}>{{country.name}}</option>
+                    <option value={{country.name}} class="form-control bg-dark-x border-0">{{country.name}}</option>
                   }
                 </select>
               </div>
