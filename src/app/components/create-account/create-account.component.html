@@ -80,14 +80,27 @@
                   Ingrese una Contraseña
                 </h4>
                 }
-                <input
-                  type="password"
-                  [(ngModel)]="PasswordInput"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control bg-dark-x border-0 mb-2"
-                  autocomplete="new-password"
-                  placeholder="Contraseña"
-                />
+                <div class="input-group mb-2">
+                  <input
+                  [type]="showPassword ? 'text' : 'password'"
+                    [(ngModel)]="PasswordInput"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control bg-dark-x border-0"
+                    id="exampleInputPassword1"
+                    autocomplete="password"
+                    placeholder="Contraseña"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="icon bg-dark-x"
+                      type="button"
+                      id="icon-click"
+                      (click)="togglePasswordVisibility()"
+                    >
+                      <fa-icon [icon]="showIcon ? faEye : faEyeSlash"></fa-icon>
+                    </button>
+                  </div>
+                </div>
               </div>
               <div class="col-md-4 w-50 mb-2">
                 @if(secondPasswordSend){
@@ -95,14 +108,27 @@
                   Ingrese una Contraseña
                 </h4>
                 }
-                <input
-                  type="password"
-                  [(ngModel)]="secondPasswordInput"
-                  [ngModelOptions]="{ standalone: true }"
-                  class="form-control bg-dark-x border-0 mb-2"
-                  autocomplete="new-password"
-                  placeholder="Repita la contraseña"
-                />
+                <div class="input-group mb-2">
+                  <input
+                  [type]="showPassword ? 'text' : 'password'"
+                    [(ngModel)]="secondPasswordInput"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control bg-dark-x border-0"
+                    id="exampleInputPassword1"
+                    autocomplete="password"
+                    placeholder="Contraseña"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="icon bg-dark-x"
+                      type="button"
+                      id="icon-click"
+                      (click)="togglePasswordVisibility()"
+                    >
+                      <fa-icon [icon]="showIcon ? faEye : faEyeSlash"></fa-icon>
+                    </button>
+                  </div>
+                </div>
               </div>
               @if (PasswordInput != secondPasswordInput) {
               <h4 class="font-weight-bold mb-4 text-warning">
