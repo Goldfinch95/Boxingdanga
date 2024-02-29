@@ -29,7 +29,7 @@ export class BlogsComponent {
     title: 'DIETAS',
     description: 'Algunos tips de alimentos o bebidas que puedes consumir para rendir mejor...',
     img: '../../../../assets/carrousel/3.jpg',
-    link: '',
+    link: '/diet',
   },
   {
     id: 4,

@@ -6,6 +6,7 @@ import { RecoveryPasswordComponent } from './components/recovery-password/recove
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TecnicasComponent } from './pages/tecnicas/tecnicas.component';
+import { DietComponent } from './pages/diet/diet.component';
 
 
 export const routes: Routes = [
@@ -39,5 +40,9 @@ export const routes: Routes = [
     {
         path: 'techniques',
         component: TecnicasComponent
+    },
+    {
+        path: 'diet',
+        component: DietComponent
     }
 ];
