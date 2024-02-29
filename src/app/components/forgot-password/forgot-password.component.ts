@@ -13,20 +13,27 @@ export class ForgotPasswordComponent {
 
   EmailInput: string = '';
   EmailSend: boolean = false;
+  alert: boolean = false;
 
   data: { email: string } = {email: ''};
 
   sendData() {
     if(this.EmailInput.length === 0){
-      this.EmailSend = true;
+      this.EmailSend = false;
+      this.alert = true;
     }
     if (this.EmailInput.length > 0) {
-      this.data.email = this.EmailInput;
+      //el email debe contener "@" o "."
+      if(/\S+@\S+\.\S+/.test(this.EmailInput)){
+        this.data.email = this.EmailInput;
+        this.EmailSend = true;
+      }
+      else{
+        this.EmailSend = false;
+        this.alert = true;
+      }
       console.log(this.data);
-      this.EmailInput = '';
-    } else {
-      this.EmailInput = 'Email';
-    }
+    } 
   }
   
 }

@@ -328,12 +328,16 @@ export class CreateAccountComponent {
       this.secondPasswordSend = true;
     } else {
       if (this.EmailInput.length >= 1) {
-        this.EmailSend = false;
+        
         this.data.name = this.nameInput;
         this.data.lastName = this.lastNameInput;
         this.data.date = this.dateInput;
         this.data.country = this.countryInput;
-        this.data.email = this.EmailInput;
+         //el email debe contener "@" o "."
+        if(/\S+@\S+\.\S+/.test(this.EmailInput)){
+          this.data.email = this.EmailInput;
+          this.EmailSend = false;
+        }
         //mínimo 6, máximo 12 caracteres
         if (this.PasswordInput.length >= 6 && this.PasswordInput.length <= 12) {
           //contiene una mayúscula
@@ -342,7 +346,6 @@ export class CreateAccountComponent {
             this.PasswordSend = false;
             if (this.PasswordInput === this.secondPasswordInput) {
               console.log(this.data);
-              console.log('cuenta creada con éxito');
             }
           }
         } 
