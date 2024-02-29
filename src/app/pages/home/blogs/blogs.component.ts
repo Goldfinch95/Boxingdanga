@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './blogs.component.html',
   styleUrl: './blogs.component.css'
 })
@@ -21,7 +22,7 @@ export class BlogsComponent {
     title: 'TÉCNICAS',
     description: 'Aprende sobre las técnicas que se utilizan en el boxeo.',
     img: '../../../../assets/carrousel/2.jpg',
-    link: '',
+    link: '/techniques',
   },
   {
     id: 3,
