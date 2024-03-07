@@ -7,6 +7,7 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
 import { HomeComponent } from './pages/home/home.component';
 import { TecnicasComponent } from './pages/tecnicas/tecnicas.component';
 import { DietComponent } from './pages/diet/diet.component';
+import { ChampionsComponent } from './pages/champions/champions.component';
 
 
 export const routes: Routes = [
@@ -36,6 +37,10 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+        path: 'champions',
+        component: ChampionsComponent
     },
     {
         path: 'techniques',

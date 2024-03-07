@@ -12,10 +12,10 @@ export class BlogsComponent {
 
   blogs = [{
     id: 1,
-    title: 'TOP 3',
+    title: 'CAMPEONES',
     description: 'Los mejores Boxeadores de sus categorías.',
     img: '../../../../assets/carrousel/1.webp',
-    link: '',
+    link: '/champions',
   },
   {
     id: 2,
