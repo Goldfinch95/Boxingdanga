@@ -5,6 +5,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
+
+interface PasswordVisibility {
+  [key: string]: boolean;
+}
 @Component({
   selector: 'app-create-account',
   standalone: true,
@@ -296,9 +300,13 @@ export class CreateAccountComponent {
     password: '',
   };
 
-  togglePasswordVisibility() {
-    this.showPassword = !this.showPassword;
-    this.showIcon = !this.showIcon;
+  passwordVisibility: PasswordVisibility = {
+    password1: false,
+    password2: false
+  };
+
+  togglePasswordVisibility(passwordType: string) {
+    this.passwordVisibility[passwordType] = !this.passwordVisibility[passwordType];
   }
 
   getPasswordType() {

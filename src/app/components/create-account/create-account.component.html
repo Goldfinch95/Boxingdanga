@@ -82,7 +82,7 @@
                 }
                 <div class="input-group mb-2">
                   <input
-                  [type]="showPassword ? 'text' : 'password'"
+                  [type]="passwordVisibility.password1 ? 'text' : 'password'"
                     [(ngModel)]="PasswordInput"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control bg-dark-x border-0"
@@ -95,9 +95,9 @@
                       class="icon bg-dark-x"
                       type="button"
                       id="icon-click"
-                      (click)="togglePasswordVisibility()"
+                      (click)="togglePasswordVisibility('password1')"
                     >
-                      <fa-icon [icon]="showIcon ? faEye : faEyeSlash"></fa-icon>
+                      <fa-icon [icon]="passwordVisibility.password1 ? faEye : faEyeSlash"></fa-icon>
                     </button>
                   </div>
                 </div>
@@ -110,7 +110,7 @@
                 }
                 <div class="input-group mb-2">
                   <input
-                  [type]="showPassword ? 'text' : 'password'"
+                  [type]="passwordVisibility.password2 ? 'text' : 'password'"
                     [(ngModel)]="secondPasswordInput"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control bg-dark-x border-0"
@@ -123,9 +123,9 @@
                       class="icon bg-dark-x"
                       type="button"
                       id="icon-click"
-                      (click)="togglePasswordVisibility()"
+                      (click)="togglePasswordVisibility('password2')"
                     >
-                      <fa-icon [icon]="showIcon ? faEye : faEyeSlash"></fa-icon>
+                      <fa-icon [icon]="passwordVisibility.password2 ? faEye : faEyeSlash"></fa-icon>
                     </button>
                   </div>
                 </div>
