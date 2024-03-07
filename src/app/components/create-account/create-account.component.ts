@@ -5,9 +5,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-
 interface PasswordVisibility {
-  [key: string]: boolean;
+  password1: boolean;
+  password2: boolean;
 }
 @Component({
   selector: 'app-create-account',
@@ -302,11 +302,12 @@ export class CreateAccountComponent {
 
   passwordVisibility: PasswordVisibility = {
     password1: false,
-    password2: false
+    password2: false,
   };
 
-  togglePasswordVisibility(passwordType: string) {
-    this.passwordVisibility[passwordType] = !this.passwordVisibility[passwordType];
+  togglePasswordVisibility(passwordType: keyof PasswordVisibility) {
+    this.passwordVisibility[passwordType] =
+      !this.passwordVisibility[passwordType];
   }
 
   getPasswordType() {
@@ -336,13 +337,12 @@ export class CreateAccountComponent {
       this.secondPasswordSend = true;
     } else {
       if (this.EmailInput.length >= 1) {
-        
         this.data.name = this.nameInput;
         this.data.lastName = this.lastNameInput;
         this.data.date = this.dateInput;
         this.data.country = this.countryInput;
-         //el email debe contener "@" o "."
-        if(/\S+@\S+\.\S+/.test(this.EmailInput)){
+        //el email debe contener "@" o "."
+        if (/\S+@\S+\.\S+/.test(this.EmailInput)) {
           this.data.email = this.EmailInput;
           this.EmailSend = false;
         }
@@ -356,7 +356,7 @@ export class CreateAccountComponent {
               console.log(this.data);
             }
           }
-        } 
+        }
       }
     }
   }
