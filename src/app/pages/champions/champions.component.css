@@ -16,6 +16,7 @@ section{
     perspective: 1000px;
     cursor: pointer;
     margin-top: 50px;
+    /*width: 70%;*/
 }
 
 .flip-box:hover .flip-box-front{
@@ -115,7 +116,7 @@ section{
 
 .inner-back h4{
     text-align: center;
-    padding: 15px;
+    padding-bottom: 15px;
 }
 .inner-back p{
     padding: 2px;
@@ -126,7 +127,7 @@ section{
 }
 
 .flip-box p{
-    font-size:20px;
+    font-size:15px;
     line-height: 1.5rem;
 }
 
@@ -146,4 +147,15 @@ section{
     margin-top: 25px;
     padding: 5px 10px;
     text-transform: uppercase;
+}
+
+.overlay{
+    
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* ajusta el valor de opacidad aquí */
+      
 }
