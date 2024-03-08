@@ -53,6 +53,7 @@ section{
     -o-transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    border: 2px solid #aba161;
 }
 
 .flip-box-front{
@@ -144,7 +145,7 @@ section{
     color: #fff;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 25px;
+    
     padding: 5px 10px;
     text-transform: uppercase;
 }
