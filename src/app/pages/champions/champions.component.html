@@ -653,6 +653,92 @@
         </div>
       </div>
       }
+      <div class="col-12">
+        <h2 class="text-white text-uppercase">Peso minimosca</h2>
+      </div>
+      @for(champion of miniFlyweightChampions; track champion.name){
+      <div class="flip-box col-md-6 col-lg-3">
+        <div
+          class="card flip-box-front text-center"
+          [style.background-image]="'url(' + champion.img + ')'"
+        ></div>
+        <div
+          class="card flip-box-back text-center"
+          [style.background-image]="'url(' + champion.img + ')'"
+        >
+          <div class="overlay"></div>
+          <div class="inner-back text-white">
+            <h4>{{ champion.name }}</h4>
+            <p>Edad: {{ champion.age }} años</p>
+            <p>Altura: {{ champion.height }} m</p>
+            <p>Titulos: {{ champion.title }}</p>
+            <p>Victorias: {{ champion.victory }}</p>
+            <p>Knockouts: {{ champion.knockout }}</p>
+            <p>Derrotas: {{ champion.defeat }}</p>
+            <p>Empates: {{ champion.draw }}</p>
+            <div class="d-flex justify-content-between">
+              <button class="flip-box-button flex-grow-1 me-2 btn-sm">
+                <a
+                  href="{{ champion.wiki }}"
+                  class="text-decoration-none text-warning"
+                  >Leer mas</a
+                >
+              </button>
+              <button class="flip-box-button flex-grow-1 ms-2 btn-sm">
+                <a
+                  href="{{ champion.boxrec }}"
+                  class="text-decoration-none text-warning"
+                  >Boxrec</a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+      <div class="col-12">
+        <h2 class="text-white text-uppercase">Peso paja o mínimo</h2>
+      </div>
+      @for(champion of strawweightChampions; track champion.name){
+      <div class="flip-box col-md-6 col-lg-3">
+        <div
+          class="card flip-box-front text-center"
+          [style.background-image]="'url(' + champion.img + ')'"
+        ></div>
+        <div
+          class="card flip-box-back text-center"
+          [style.background-image]="'url(' + champion.img + ')'"
+        >
+          <div class="overlay"></div>
+          <div class="inner-back text-white">
+            <h4>{{ champion.name }}</h4>
+            <p>Edad: {{ champion.age }} años</p>
+            <p>Altura: {{ champion.height }} m</p>
+            <p>Titulos: {{ champion.title }}</p>
+            <p>Victorias: {{ champion.victory }}</p>
+            <p>Knockouts: {{ champion.knockout }}</p>
+            <p>Derrotas: {{ champion.defeat }}</p>
+            <p>Empates: {{ champion.draw }}</p>
+            <div class="d-flex justify-content-between">
+              <button class="flip-box-button flex-grow-1 me-2 btn-sm">
+                <a
+                  href="{{ champion.wiki }}"
+                  class="text-decoration-none text-warning"
+                  >Leer mas</a
+                >
+              </button>
+              <button class="flip-box-button flex-grow-1 ms-2 btn-sm">
+                <a
+                  href="{{ champion.boxrec }}"
+                  class="text-decoration-none text-warning"
+                  >Boxrec</a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
     </div>
   </div>
 </section>
