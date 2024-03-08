@@ -7,11 +7,10 @@ describe('CreateAccountComponent', () => {
   let fixture: ComponentFixture<CreateAccountComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CreateAccountComponent]
-    })
-    .compileComponents();
-    
+    await TestBed.configureTesti({
+      imports: [CreateAccountComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CreateAccountComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

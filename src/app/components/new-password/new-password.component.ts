@@ -6,7 +6,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 interface PasswordVisibility {
-  [key: string]: boolean;
+  password1: boolean;
+  password2: boolean;
 }
 
 @Component({
@@ -14,10 +15,9 @@ interface PasswordVisibility {
   standalone: true,
   imports: [FormsModule, RouterLink, NgbModule, FontAwesomeModule],
   templateUrl: './new-password.component.html',
-  styleUrl: './new-password.component.css'
+  styleUrl: './new-password.component.css',
 })
 export class NewPasswordComponent {
-
   faEye = faEye;
   faEyeSlash = faEyeSlash;
 
@@ -33,11 +33,12 @@ export class NewPasswordComponent {
 
   passwordVisibility: PasswordVisibility = {
     password1: false,
-    password2: false
+    password2: false,
   };
 
-  togglePasswordVisibility(passwordType: string) {
-    this.passwordVisibility[passwordType] = !this.passwordVisibility[passwordType];
+  togglePasswordVisibility(passwordType: keyof PasswordVisibility) {
+    this.passwordVisibility[passwordType] =
+      !this.passwordVisibility[passwordType];
   }
 
   getPasswordType() {
@@ -45,15 +46,16 @@ export class NewPasswordComponent {
   }
 
   sendData() {
-    if(this.PasswordInput.length === 0){
+    if (this.PasswordInput.length === 0) {
       this.PasswordSend = true;
     }
-    if(this.secondPasswordInput.length === 0){
+    if (this.secondPasswordInput.length === 0) {
       this.secondPasswordSend = true;
-    }
-    
-    else {
-      if (this.PasswordInput.length >= 1 && this.secondPasswordInput.length > 1) {
+    } else {
+      if (
+        this.PasswordInput.length >= 1 &&
+        this.secondPasswordInput.length > 1
+      ) {
         //mínimo 6, máximo 12 caracteres
         if (this.PasswordInput.length >= 6 && this.PasswordInput.length <= 12) {
           //contiene una mayúscula
@@ -61,11 +63,10 @@ export class NewPasswordComponent {
             this.data.password = this.PasswordInput;
             this.PasswordSend = false;
             console.log(this.data);
-            console.log('contraseñas cambiadas')
+            console.log('contraseñas cambiadas');
             this.validate = true;
-        }
-        }
-        else {
+          }
+        } else {
           this.PasswordSend = true;
         }
       }
