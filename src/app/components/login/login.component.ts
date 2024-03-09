@@ -23,6 +23,7 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router) {
     this.loginData = new Login();
   }
+
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   loginData: Login;
@@ -70,6 +71,7 @@ export class LoginComponent {
         this.PasswordSend = true;
       }
       if (this.canSend) {
+        //console.log(Login)
         this.http
           .get('http://localhost:8000/clientes')
           .subscribe((res: any) => {

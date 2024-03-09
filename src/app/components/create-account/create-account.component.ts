@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 interface PasswordVisibility {
   password1: boolean;
@@ -12,13 +13,21 @@ interface PasswordVisibility {
 @Component({
   selector: 'app-create-account',
   standalone: true,
-  imports: [FormsModule, RouterLink, NgbModule, FontAwesomeModule],
+  imports: [
+    FormsModule,
+    RouterLink,
+    NgbModule,
+    HttpClientModule,
+    NgbModule,
+    FontAwesomeModule,
+  ],
   templateUrl: './create-account.component.html',
   styleUrl: './create-account.component.css',
 })
 export class CreateAccountComponent {
-  faEye = faEye;
-  faEyeSlash = faEyeSlash;
+  constructor(private http: HttpClient, private router: Router) {
+    this.accountData = new Account();
+  }
 
   countries = [
     { name: 'Afganistán' },
@@ -266,39 +275,20 @@ export class CreateAccountComponent {
     { name: 'Zimbabue' },
   ];
 
-  nameInput: string = '';
-  lastNameInput: string = '';
-  dateInput: string = '';
-  countryInput: string = 'Selecciona un país';
-  EmailInput: string = '';
-  PasswordInput: string = '';
-  secondPasswordInput: string = '';
-  showPassword = false;
-  showIcon = false;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
+
+  accountData: Account;
   nameSend: boolean = false;
   lastNameSend: boolean = false;
   dateSend: boolean = false;
+  emailSend: boolean = false;
   countrySend: boolean = false;
-  EmailSend: boolean = false;
-  PasswordSend: boolean = false;
+  passwordSend: boolean = false;
   secondPasswordSend: boolean = false;
-  dataSend: boolean = false;
-
-  data: {
-    name: string;
-    lastName: string;
-    date: string;
-    country: string;
-    email: string;
-    password: string;
-  } = {
-    name: '',
-    lastName: '',
-    date: '',
-    country: '',
-    email: '',
-    password: '',
-  };
+  showPassword = false;
+  showIcon = false;
+  canSend = true;
 
   passwordVisibility: PasswordVisibility = {
     password1: false,
@@ -315,49 +305,85 @@ export class CreateAccountComponent {
   }
 
   sendData() {
-    if (this.nameInput.length === 0) {
+    if (this.accountData.Name.length === 0) {
       this.nameSend = true;
     }
-    if (this.lastNameInput.length === 0) {
+    if (this.accountData.Lastname.length === 0) {
       this.lastNameSend = true;
     }
-    if (this.dateInput.length === 0) {
+    if (this.accountData.Date.length === 0) {
       this.dateSend = true;
     }
-    if (this.countryInput.length === 0) {
+    if (this.accountData.Country.length === 0) {
       this.countrySend = true;
     }
-    if (this.EmailInput.length === 0) {
-      this.EmailSend = true;
+    if (this.accountData.Email.length === 0) {
+      this.emailSend = true;
     }
-    if (this.PasswordInput.length === 0) {
-      this.PasswordSend = true;
+    if (this.accountData.Password.length === 0) {
+      this.passwordSend = true;
     }
-    if (this.secondPasswordInput.length === 0) {
+    if (this.accountData.Secondpassword.length === 0) {
       this.secondPasswordSend = true;
     } else {
-      if (this.EmailInput.length >= 1) {
-        this.data.name = this.nameInput;
-        this.data.lastName = this.lastNameInput;
-        this.data.date = this.dateInput;
-        this.data.country = this.countryInput;
-        //el email debe contener "@" o "."
-        if (/\S+@\S+\.\S+/.test(this.EmailInput)) {
-          this.data.email = this.EmailInput;
-          this.EmailSend = false;
-        }
-        //mínimo 6, máximo 12 caracteres
-        if (this.PasswordInput.length >= 6 && this.PasswordInput.length <= 12) {
-          //contiene una mayúscula
-          if (/[A-Z]/.test(this.PasswordInput)) {
-            this.data.password = this.PasswordInput;
-            this.PasswordSend = false;
-            if (this.PasswordInput === this.secondPasswordInput) {
-              console.log(this.data);
-            }
+      //el email debe existir y contener un "@" o "."
+      if (
+        this.accountData.Email.length >= 1 &&
+        /\S+@\S+\.\S+/.test(this.accountData.Email)
+      ) {
+        this.emailSend = false;
+      } else {
+        this.canSend = false;
+      }
+      //el password debe tener mínimo 6 y máximo 12 caracteres con una letra mayúscula.
+      if (
+        this.accountData.Password.length >= 6 &&
+        this.accountData.Password.length <= 12 &&
+        /[A-Z]/.test(this.accountData.Password)
+      ) {
+        //contiene una mayúscula
+        this.passwordSend = false;
+      } else {
+        this.canSend = false;
+        this.passwordSend = true;
+      }
+      if(this.canSend){
+        //console.log(this.accountData)
+        this.http.get('http://localhost:8000/clientes').subscribe((res:any) =>{
+          const users = res.data[0];
+          const userFound = users.filter(
+            (user: any) =>
+            user.email === this.accountData.Email &&
+            user.password === this.accountData.Password
+          );
+          if (userFound.length > 0) {
+            alert ('Este usuario ya existe');
           }
-        }
+          else{
+            alert ('Cuenta creada con exito')
+            this.router.navigateByUrl('/login');
+          }
+        })
       }
     }
+  }
+}
+
+export class Account {
+  Name: string;
+  Lastname: string;
+  Date: string;
+  Country: string;
+  Email: string;
+  Password: string;
+  Secondpassword: string;
+  constructor() {
+    this.Name = '';
+    this.Lastname = '';
+    this.Date = '';
+    this.Country = 'Selecciona un país';
+    this.Email = '';
+    this.Password = '';
+    this.Secondpassword = '';
   }
 }

@@ -23,7 +23,7 @@
                 }
                 <input
                   type="text"
-                  [(ngModel)]="nameInput"
+                  [(ngModel)]="accountData.Name"
                   [ngModelOptions]="{ standalone: true }"
                   class="form-control bg-dark-x border-0"
                   aria-describedby="emailHelp"
@@ -38,7 +38,7 @@
                 }
                 <input
                   type="text"
-                  [(ngModel)]="lastNameInput"
+                  [(ngModel)]="accountData.Lastname"
                   [ngModelOptions]="{ standalone: true }"
                   class="form-control bg-dark-x border-0"
                   aria-describedby="emailHelp"
@@ -53,7 +53,7 @@
                 }
                 <input
                   type="date"
-                  [(ngModel)]="dateInput"
+                  [(ngModel)]="accountData.Date"
                   [ngModelOptions]="{ standalone: true }"
                   class="form-control bg-dark-x border-0"
                   aria-describedby="emailHelp"
@@ -66,7 +66,7 @@
                   Ingrese un país
                 </h4>
                 }
-                <select class="form-select bg-dark-x border-0" [(ngModel)]="countryInput"
+                <select class="form-select bg-dark-x border-0" [(ngModel)]="accountData.Country"
                 [ngModelOptions]="{ standalone: true }" aria-label="Default select example">
                 <option  selected class="form-control bg-dark-x border-0">Selecciona un país</option>
                   @for (country of countries; track country.name) {
@@ -75,7 +75,7 @@
                 </select>
               </div>
               <div class="col-md-4 w-50 mb-2">
-                @if(PasswordSend){
+                @if(passwordSend){
                 <h4 class="font-weight-bold mb-4 text-warning">
                   Ingrese una Contraseña
                 </h4>
@@ -83,7 +83,7 @@
                 <div class="input-group mb-2">
                   <input
                   [type]="passwordVisibility['password1'] ? 'text' : 'password'"
-                    [(ngModel)]="PasswordInput"
+                    [(ngModel)]="accountData.Password"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control bg-dark-x border-0"
                     id="exampleInputPassword1"
@@ -111,7 +111,7 @@
                 <div class="input-group mb-2">
                   <input
                   [type]="passwordVisibility['password2'] ? 'text' : 'password'"
-                    [(ngModel)]="secondPasswordInput"
+                    [(ngModel)]="accountData.Secondpassword"
                     [ngModelOptions]="{ standalone: true }"
                     class="form-control bg-dark-x border-0"
                     id="exampleInputPassword1"
@@ -130,38 +130,26 @@
                   </div>
                 </div>
               </div>
-              @if (PasswordInput != secondPasswordInput) {
+              @if (this.accountData.Password != this.accountData.Secondpassword) {
               <h4 class="font-weight-bold mb-4 text-warning">
                 Las contraseñas no coinciden
               </h4>
               }
               <div class="mb-4">
-                @if(EmailSend){
+                @if(emailSend){
                 <h4 class="font-weight-bold mb-4 text-warning">
                   Ingrese un Email
                 </h4>
                 }
                 <input
                   type="text"
-                  [(ngModel)]="EmailInput"
+                  [(ngModel)]="accountData.Email"
                   [ngModelOptions]="{ standalone: true }"
                   class="form-control bg-dark-x border-0"
                   aria-describedby="emailHelp"
                   placeholder="Email"
                 />
               </div>
-              @if (dataSend) {
-              <div class="mt-4 mb-4">
-                <button
-                  type="submit"
-                  routerLink="/login"
-                  (click)="sendData()"
-                  class="btn btn-warning w-100"
-                >
-                  Registrarse
-                </button>
-              </div>
-              } @else {
               <div class="mt-4 mb-4">
                 <button
                   type="submit"
@@ -171,7 +159,6 @@
                   Registrarse
                 </button>
               </div>
-              }
             </form>
           </div>
         </div>
