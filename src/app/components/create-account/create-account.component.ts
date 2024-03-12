@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 interface PasswordVisibility {
   password1: boolean;
@@ -28,8 +29,6 @@ export class CreateAccountComponent {
   constructor(private http: HttpClient, private router: Router) {
     this.accountData = new Account();
   }
-
-  
 
   countries = [
     { name: 'Afganistán' },
@@ -306,7 +305,7 @@ export class CreateAccountComponent {
     return this.showPassword ? 'text' : 'password';
   }
 
-  sendData() {
+  async sendData() {
     if (this.accountData.Name.length === 0) {
       this.nameSend = true;
     }
@@ -349,40 +348,40 @@ export class CreateAccountComponent {
         this.canSend = false;
         this.passwordSend = true;
       }
-      if(this.canSend){
-        //console.log(this.accountData)
-        this.http.get('http://localhost:8000/clientes').subscribe((res:any) =>{
-          const users = res.data[0];
-          const userFound = users.filter(
-            (user: any) =>
-            user.email === this.accountData.Email 
-          );
-          if (userFound.length > 0) {
-            alert ('Este usuario ya existe');
-          }
-          else{
-            alert ('Cuenta creada con exito')
-            this.router.navigateByUrl('/login');
-          }
-        });
-        
+      if (this.canSend) {
+        const responseGet: any = await lastValueFrom(
+          this.http.get('http://localhost:8000/clientes')
+        );
+        const users = responseGet.data[0];
+        const userFound = users.filter(
+          (user: any) => user.email === this.accountData.Email
+        );
+        if (userFound.length > 0) {
+          return alert('Este usuario ya existe');
+        } else {
+          alert('Cuenta creada con exito');
+          this.router.navigateByUrl('/login');
+        }
+
         const accountDataToSend = {
           nombre: this.accountData.Name,
           apellido: this.accountData.Lastname,
           fecha_nacimiento: this.accountData.Date,
           pais: this.accountData.Country,
           email: this.accountData.Email,
-          password: this.accountData.Password
+          password: this.accountData.Password,
         };
-  
-        this.http.post('http://localhost:8000/clientes/', accountDataToSend).subscribe((res: any) => {
-          console.log(res)
-          if (res.code != 200 ) {
-            console.log('error');
-          } else {
-            console.log(res.message);
-          }
-        });
+
+        this.http
+          .post('http://localhost:8000/clientes/', accountDataToSend)
+          .subscribe((res: any) => {
+            console.log(res);
+            if (res.code != 200) {
+              console.log('error');
+            } else {
+              console.log(res.message);
+            }
+          });
       }
     }
   }
