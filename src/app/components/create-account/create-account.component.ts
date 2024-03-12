@@ -372,16 +372,14 @@ export class CreateAccountComponent {
           password: this.accountData.Password,
         };
 
-        this.http
-          .post('http://localhost:8000/clientes/', accountDataToSend)
-          .subscribe((res: any) => {
-            console.log(res);
-            if (res.code != 200) {
+        const responsePost: any = await lastValueFrom(this.http
+          .post('http://localhost:8000/clientes/', accountDataToSend))
+            console.log(responsePost);
+            if (responsePost.code != 200) {
               console.log('error');
             } else {
-              console.log(res.message);
+              console.log(responsePost.message);
             }
-          });
       }
     }
   }
