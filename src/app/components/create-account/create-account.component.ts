@@ -29,6 +29,8 @@ export class CreateAccountComponent {
     this.accountData = new Account();
   }
 
+  
+
   countries = [
     { name: 'Afganistán' },
     { name: 'Islas Åland' },
@@ -353,8 +355,7 @@ export class CreateAccountComponent {
           const users = res.data[0];
           const userFound = users.filter(
             (user: any) =>
-            user.email === this.accountData.Email &&
-            user.password === this.accountData.Password
+            user.email === this.accountData.Email 
           );
           if (userFound.length > 0) {
             alert ('Este usuario ya existe');
@@ -363,7 +364,25 @@ export class CreateAccountComponent {
             alert ('Cuenta creada con exito')
             this.router.navigateByUrl('/login');
           }
-        })
+        });
+        
+        const accountDataToSend = {
+          nombre: this.accountData.Name,
+          apellido: this.accountData.Lastname,
+          fecha_nacimiento: this.accountData.Date,
+          pais: this.accountData.Country,
+          email: this.accountData.Email,
+          password: this.accountData.Password
+        };
+  
+        this.http.post('http://localhost:8000/clientes/', accountDataToSend).subscribe((res: any) => {
+          console.log(res)
+          if (res.code != 200 ) {
+            console.log('error');
+          } else {
+            console.log(res.message);
+          }
+        });
       }
     }
   }
