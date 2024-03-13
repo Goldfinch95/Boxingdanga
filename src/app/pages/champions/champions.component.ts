@@ -14,28 +14,29 @@ CardsComponent;
   styleUrl: './champions.component.css',
 })
 export class ChampionsComponent {
+  //arranque de componente, lo primero que se hace.
   constructor() {
     this.category = this.categories[0].category;
     this.championCategorySelected = this.championsAll[this.category];
   }
   categories = [
-    { category: 'Heavyweight' },
-    { category: 'Cruiserweight' },
-    { category: 'LightHeavyweight' },
-    { category: 'SuperMiddleweight' },
-    { category: 'Middleweight' },
-    { category: 'SuperWelterweight' },
-    { category: 'Welterweight' },
-    { category: 'SuperLightweight' },
-    { category: 'Lightweight' },
-    { category: 'SuperFeatherweight' },
-    { category: 'Featherweight' },
-    { category: 'SuperBantamweight' },
-    { category: 'Bantamweight' },
-    { category: 'SuperFlyweight' },
-    { category: 'Flyweight' },
-    { category: 'LightFlyweight' },
-    { category: 'Minimumweight' },
+    { category: 'Heavyweight', name: 'Heavyweight' },
+    { category: 'Cruiserweight', name: 'Cruiserweight' },
+    { category: 'LightHeavyweight', name: 'Light Heavyweight' },
+    { category: 'SuperMiddleweight', name: 'Super Middleweight' },
+    { category: 'Middleweight', name: 'Middleweight' },
+    { category: 'SuperWelterweight', name: 'Super Welterweight' },
+    { category: 'Welterweight', name: 'Welterweight' },
+    { category: 'SuperLightweight', name: 'Super Lightweight' },
+    { category: 'Lightweight', name: 'Lightweight' },
+    { category: 'SuperFeatherweight', name: 'Super Featherweight' },
+    { category: 'Featherweight', name: 'Featherweight' },
+    { category: 'SuperBantamweight', name: 'Super Bantamweight' },
+    { category: 'Bantamweight', name: 'Bantamweight' },
+    { category: 'SuperFlyweight', name: 'Super Flyweight' },
+    { category: 'Flyweight', name: 'Flyweight' },
+    { category: 'LightFlyweight', name: 'Light Flyweight' },
+    { category: 'Minimumweight', name: 'Minimumweight' },
   ];
 
   championsAll: ChampionsAll = championData;
@@ -43,10 +44,7 @@ export class ChampionsComponent {
   category: string;
   championCategorySelected: Champion[];
 
-  change = false;
-
   onCategoryChange() {
-    console.log(this.category);
     this.championCategorySelected = this.championsAll[this.category];
   }
 }

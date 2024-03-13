@@ -20,14 +20,10 @@
             value="{{ category.category }}"
             class="form-control bg-dark border-0"
           >
-            {{ category.category }}
+            {{ category.name }}
           </option>
           }
         </select>
-      </div>
-      <!--Title-->
-      <div class="col-12">
-        <h2></h2>
       </div>
       <app-cards [categorySelected]="championCategorySelected"></app-cards>
     </div>
