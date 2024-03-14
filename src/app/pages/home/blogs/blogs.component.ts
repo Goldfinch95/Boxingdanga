@@ -19,10 +19,10 @@ export class BlogsComponent {
   },
   {
     id: 2,
-    title: 'TÉCNICAS',
-    description: 'Aprende sobre las técnicas que se utilizan en el boxeo.',
+    title: 'pesaje',
+    description: 'Averigua en que categoría te encuentras según tu peso.',
     img: '../../../../assets/carrousel/2.jpg',
-    link: '/techniques',
+    link: '/weighing',
   },
   {
     id: 3,

@@ -43,7 +43,7 @@ export const routes: Routes = [
         component: ChampionsComponent
     },
     {
-        path: 'techniques',
+        path: 'weighing',
         component: TecnicasComponent
     },
     {
