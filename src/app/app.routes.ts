@@ -5,9 +5,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { RecoveryPasswordComponent } from './components/recovery-password/recovery-password.component';
 import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { HomeComponent } from './pages/home/home.component';
-import { TecnicasComponent } from './pages/tecnicas/tecnicas.component';
-import { DietComponent } from './pages/diet/diet.component';
 import { ChampionsComponent } from './pages/champions/champions.component';
+import { DietComponent } from './pages/diet/diet.component';
+import { TecnicasComponent } from './pages/tecnicas/tecnicas.component';
+
 
 
 export const routes: Routes = [
