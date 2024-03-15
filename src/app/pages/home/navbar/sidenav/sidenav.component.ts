@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 export class SidenavComponent {
   toHome(){
     document.getElementById('carouselExampleCaptions')?.scrollIntoView({behavior: 'smooth'})
+    
   }
 
   toBlogs(){
